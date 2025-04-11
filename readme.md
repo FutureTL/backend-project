@@ -50,3 +50,11 @@ dev dependency - is druing the development of the project and not taken to produ
 We go to package.json file and in scripts add -
         "dev": "nodemon src/index.js"
 So, now when we run the command npm run dev, nodemon will authomatically restart the server for the script within in index.js
+
+In the package.json, also add - "type": "module" , as we will be working using modules, so we can use the import statement.
+
+To push these changes to github:
+        git status (to see that your file structure is ok)
+        git add .   (to add all the new files created)
+        git commit -m "setup project files part-1"
+        git push
