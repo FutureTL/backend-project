@@ -58,3 +58,15 @@ To push these changes to github:
         git add .   (to add all the new files created)
         git commit -m "setup project files part-1"
         git push
+
+STEP-3 Installing prettier
+prettier helps in professional settings so that all the developers working on a project are on the same page.To install it as a development dependency:
+        git i -D prettier
+
+Now we have to setup two of its files through the bash terminal in root directory
+        touch .prettierrc .prettierignore
+
+in .prettierrc write all the common things like tabWidth, semi, etc
+in .prettierignore mention all the files where you dont want to use pretiier like .env files where using prettier is more disastrous than helpful.
+
+Then push these changes to github, now you know how to.
