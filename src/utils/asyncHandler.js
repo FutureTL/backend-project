@@ -1,7 +1,7 @@
 //asyncHandler is a higher order function that accepts another function and executes it within itself.
 const asyncHandler = (requestHandler)=> {
 
-    (req, res, next)=>{
+    return (req, res, next)=>{
         Promise.resolve(requestHandler(req,res,next)).reject((err)=> next(err))
     }
 }

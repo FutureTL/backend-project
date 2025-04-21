@@ -183,6 +183,38 @@ Using the custom methods in mongoose we generated the jwt tokens- access, refres
 
 Refresh token has less information in the payload as compared to access token.
 
+                FILE UPLOAD
+What method we will follow for uploading files:
+1. We will first take files from the user and store in our local server. Here we will use MULTER.
+2. from the local server then the file will be uploaded on a third party service like cloudinary.
+3. Finally after this we can delete the file from our server.
+
+This file upload code will be added in utility, as it is quite reusable.
+
+Once we are done with creating the cloudinary code we will move on to multer.
+
+
+
+
+
+Deatiled implementation of MULTER-https://blog.logrocket.com/multer-nodejs-express-upload-file/
+
+
+
+Now we have started writing the code for our routes. 
+We create user route and user controller and then import it in app.js
+
+In app.js we imported userRouter from users route and this code redirects app.use("/api/v1/users", userRoute) to userRoute which is a register route to register the details of the user. These details will be added moving forward.
+
+After redirecting to user route, it is further redirected to user controller.
+
+So, the sequence is app.js -> users route -> users controller.
+
+IMPORTANT PT- In import statement we can give a name of our choose only when we use export default.
+
+Now we use POSTMAN and test our setup, we download it and go to collections-> click on + on top -> select post method-> type url eg, http://localhost:3000/api/v1/users/register , and we should get 200, ok message.
+
+
 
 
 
