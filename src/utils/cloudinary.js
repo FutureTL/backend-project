@@ -39,10 +39,11 @@ const uploadOnCloudinary = async (localFilePath) => {
 
       } catch (error) {
         fs.unlinkSync(localFilePath)//remove the locally saved
-        //temporary file as it is not uploaded to cloudinary.
-         
-        
+        //temporary file as it is not uploaded to cloudinary. 
       }
 
 
 }
+
+
+export { uploadOnCloudinary }

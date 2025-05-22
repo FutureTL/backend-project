@@ -5,7 +5,7 @@ I will be updating the entire running of the project and its entire steps in thi
 1. creating a folder and then opening it in VS Code. Once opened, the project will be initialized. In the terminal write -
         npm init (this is a command to load the package.json file.Before this command make sure that node is installed using npm i node)
 
-2. Create a readme.md file and mention what all information you want I am mentioning.
+2. Create a readme.md file and mention what all information you want like I am mentioning.
 
 3. To upload project to git the following commands-
         git -init
@@ -44,7 +44,7 @@ Using gitignore generators from google, we can bring in a structure which is com
 
 Nodemon- restarts the server once the file is saved. otherwise we manually have to restart the server.
 
-dev dependency - is druing the development of the project and not taken to production . So we can install nodemon as a dev dependency.  to install it as a dev dependency-
+dev dependency - is during the development of the project and not taken to production . So we can install nodemon as a dev dependency.  to install it as a dev dependency-
         npm i -D nodemon
 
 We go to package.json file and in scripts add -
@@ -184,20 +184,39 @@ Using the custom methods in mongoose we generated the jwt tokens- access, refres
 Refresh token has less information in the payload as compared to access token.
 
                 FILE UPLOAD
+File upload in express can be done in 2 ways:
+        1. using express file-upload
+        2. using multer
+        any of the above can be used but for this project we will be using multer.
+
 What method we will follow for uploading files:
 1. We will first take files from the user and store in our local server. Here we will use MULTER.
 2. from the local server then the file will be uploaded on a third party service like cloudinary.
 3. Finally after this we can delete the file from our server.
 
-This file upload code will be added in utility, as it is quite reusable.
+This file upload code will be added in utility, as it is quite reusable.Then it can be added wherever necessary.
 
 Once we are done with creating the cloudinary code we will move on to multer.
 
+Multer is a middleware that is used to handle files in multipart/form-data, used for uploading files. Multipart means that the form contains both text fields as well as files(pdf,images etc).Multipart means the browser will process the text fields separately than the file fields.
+
+Multer will not process a form that is not multipart.
+
+In this part for eg-
+
+app.post('/profile', upload.single('avatar'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+})
 
 
+'/profile' represents router where file is to be uploaded.
+upload.single part is the middleware where our multer comes into picture
+
+function(req,res,next) represents the controller.
 
 
-Deatiled implementation of MULTER-https://blog.logrocket.com/multer-nodejs-express-upload-file/
+Detailed implementation of MULTER-https://blog.logrocket.com/multer-nodejs-express-upload-file/
 
 
 
@@ -213,6 +232,31 @@ So, the sequence is app.js -> users route -> users controller.
 IMPORTANT PT- In import statement we can give a name of our choose only when we use export default.
 
 Now we use POSTMAN and test our setup, we download it and go to collections-> click on + on top -> select post method-> type url eg, http://localhost:3000/api/v1/users/register , and we should get 200, ok message.
+
+
+                                REGISTER CONTROLLER 
+
+Logic for registering user-
+        1. get user details from frontend.
+        2. validation-not empty or all the fields are correct.
+        3. check if user already exists:username, email
+        4. check for images, avatar
+        5. upload them to cloudinary, check avatar
+        6. create user object-create entry in db(we are using mongodb where mostly mostly objects are created)
+        //when we make entries in the db we get response as it is whatever we have created everything is received back in the form of response.
+        7. remove password and refresh token field from response.
+        8. check for user creation.(check if response is actually received.)
+        9. return res
+
+-Some used in javascript- if all fields dont satisfy the condition we are checking for it returns false.
+-even if one field satisfies, it returns true.
+
+-what is optional chaining?-
+
+
+
+-Trim() is a built in string function used to remove white spaces from both the ends of the string.
+
 
 
 

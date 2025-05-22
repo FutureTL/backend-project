@@ -39,10 +39,7 @@ const videoSchema = new mongoose.Schema(
     }
     
 
-
-
-
-},{timestamps:true})
+}  ,{timestamps:true})
 
 
 //using mongoose aggregate as a plugin as it was added later in mongodb.
