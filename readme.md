@@ -259,6 +259,24 @@ Logic for registering user-
 
 
 
+                        WORKING WITH POSTMAN
+-we use json to send data only when text values are to be sent.
+-it cannot be used when we also want to send files.
+-for files we select form-data.
+
+
+                        ACCESS TOKEN AND REFRESH TOKEN
+-Access token are short lived whereas the refresh tokens are long lived.These are comparative terms.
+
+-I have an access token, then I am authenticated and loggined in and suppose it expires after 15 mins due to security reasons, then as refresh token is longer lived and given to both the user and saved to the server, I will be authenticated using the refresh token-> if the authentication is successful, then I will again be granted the access token.
+
+We will create an endpoint for the user to hit and get his access tokens refreshed. How will this happen?
+       -When the user hits endpoint we will take the    refresh tokens and compare against the one we have stored in our database.
+       -If they match then both the access and refresh token will be refreshed.
+
+IMPT POINTS: when we write req.cookies, here cookies refrences the cookie-parser middleware. 
+
+
 
 
 
